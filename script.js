@@ -24,9 +24,9 @@ function playRound(playerSelection, computerSelection) {
      || playerSelection === "paper" && computerSelection === "rock"
      || playerSelection === "scissors" && computerSelection === "paper"
     ) {
-        return `You win. ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}.`;
+        return `You win! ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}.`;
     } else {
-        return `You lose. ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} beats ${playerSelection}.`;
+        return `You lose! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} beats ${playerSelection}.`;
     }
 }
 
