@@ -19,6 +19,8 @@ function resetScores() {
 }
 
 function playRound(playerChoice) {
+    winnerAnnouncementText.textContent = "";
+
     playerChoice = playerChoice.toLowerCase();
     let computerChoice = getComputerChoice();
 
