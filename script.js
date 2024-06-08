@@ -13,9 +13,14 @@ function getComputerChoice() {
     }
 }
 
+function resetScores() {
+    playerScore = 0;
+    computerScore = 0;
+}
+
 function playRound(playerChoice) {
     playerChoice = playerChoice.toLowerCase();
-    const computerChoice = getComputerChoice();
+    let computerChoice = getComputerChoice();
 
     let result;
 
@@ -23,20 +28,36 @@ function playRound(playerChoice) {
         result = "It was a tie.";
     } else if (
         playerChoice === "rock" && computerChoice === "scissors"
-     || playerChoice === "paper" && computerChoice === "rock"
-     || playerChoice === "scissors" && computerChoice === "paper"
+        || playerChoice === "paper" && computerChoice === "rock"
+        || playerChoice === "scissors" && computerChoice === "paper"
     ) {
         result = "You win!";
+        playerScore += 1;
     } else {
         result = "You lose!";
+        computerScore += 1;
     }
 
-    console.log(result);
+    roundResultText.textContent = `You chose ${playerChoice}\nThe computer chose ${computerChoice}\n${result}`;
+
+    if (playerScore >= 5) {
+        winnerAnnouncementText.textContent = "Player wins! Scores will now be reset.";
+        resetScores();
+    } else if (computerScore >= 5) {
+        winnerAnnouncementText.textContent = "Computer wins! Scores will now be reset.";
+        resetScores();
+    }
 }
 
 const selectRockButton = document.querySelector("#select-rock");
 const selectPaperButton = document.querySelector("#select-paper");
 const selectScissorsButton = document.querySelector("#select-scissors");
+
+const roundResultText = document.querySelector("#round-result");
+const winnerAnnouncementText = document.querySelector("#winner-announcement");
+
+let playerScore = 0;
+let computerScore = 0;
 
 selectRockButton.addEventListener("click", () => playRound("rock"));
 selectPaperButton.addEventListener("click", () => playRound("paper"));
