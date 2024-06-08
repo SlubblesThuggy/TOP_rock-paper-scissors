@@ -13,32 +13,31 @@ function getComputerChoice() {
     }
 }
 
-function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase();
-    computerSelection = computerSelection.toLowerCase();
+function playRound(playerChoice) {
+    playerChoice = playerChoice.toLowerCase();
+    const computerChoice = getComputerChoice();
 
-    if (playerSelection === computerSelection) {
-        return "It was a tie.";
+    let result;
+
+    if (playerChoice === computerChoice) {
+        result = "It was a tie.";
     } else if (
-        playerSelection === "rock" && computerSelection === "scissors"
-     || playerSelection === "paper" && computerSelection === "rock"
-     || playerSelection === "scissors" && computerSelection === "paper"
+        playerChoice === "rock" && computerChoice === "scissors"
+     || playerChoice === "paper" && computerChoice === "rock"
+     || playerChoice === "scissors" && computerChoice === "paper"
     ) {
-        return `You win! ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}.`;
+        result = "You win!";
     } else {
-        return `You lose! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} beats ${playerSelection}.`;
+        result = "You lose!";
     }
+
+    console.log(result);
 }
 
-function playGame() {
-    while (true) {
-        let playerSelection = prompt("Make a choice.");
-        if (playerSelection == null) break;
+const selectRockButton = document.querySelector("#select-rock");
+const selectPaperButton = document.querySelector("#select-paper");
+const selectScissorsButton = document.querySelector("#select-scissors");
 
-        let computerSelection = getComputerChoice();
-        let roundResult = playRound(playerSelection, computerSelection);
-        console.log(roundResult);
-    }
-}
-
-playGame();
+selectRockButton.addEventListener("click", () => playRound("rock"));
+selectPaperButton.addEventListener("click", () => playRound("paper"));
+selectScissorsButton.addEventListener("click", () => playRound("scissors"));
