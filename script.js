@@ -38,7 +38,7 @@ function playRound(playerChoice) {
         computerScore += 1;
     }
 
-    roundResultText.textContent = `You chose ${playerChoice}\nThe computer chose ${computerChoice}\n${result}`;
+    roundResultText.textContent = `You chose ${playerChoice}\nThe computer chose ${computerChoice}\n${result}\n\nPlayer score: ${playerScore}\nComputer score: ${computerScore}`;
 
     if (playerScore >= 5) {
         winnerAnnouncementText.textContent = "Player wins! Scores will now be reset.";
